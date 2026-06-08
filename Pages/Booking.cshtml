@@ -1,0 +1,30 @@
+@page
+@model BookingModel
+@{
+    ViewData["Title"] = "Book an Appointment";
+}
+
+<h2>Book an Appointment</h2>
+
+<form method="post">
+    <div class="form-group">
+        <label asp-for="Booking.ServiceId"></label>
+        <select asp-for="Booking.ServiceId" class="form-control" asp-items="Model.Services"></select>
+        <span asp-validation-for="Booking.ServiceId" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Booking.Date"></label>
+        <input asp-for="Booking.Date" class="form-control" type="date" />
+        <span asp-validation-for="Booking.Date" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Booking.Time"></label>
+        <input asp-for="Booking.Time" class="form-control" type="time" />
+        <span asp-validation-for="Booking.Time" class="text-danger"></span>
+    </div>
+    <button type="submit" class="btn btn-primary">Book Appointment</button>
+</form>
+
+<div>
+    <a asp-page="Index">Back to Home</a>
+</div>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Urban Company Salon</title>
+    <link rel="stylesheet" href="~/css/site.css" />
+    <script src="~/js/site.js" defer></script>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a asp-page="/Index">Home</a></li>
+                <li><a asp-page="/Services">Services</a></li>
+                <li><a asp-page="/Booking">Booking</a></li>
+                <li><a asp-page="/Cart">Cart</a></li>
+                <li><a asp-page="/Privacy">Privacy Policy</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main role="main" class="pb-3">
+        @RenderBody()
+    </main>
+    <footer>
+        <p>&copy; 2023 Urban Company Salon</p>
+    </footer>
+    @await Html.PartialAsync("_ValidationScriptsPartial")
+</body>
+</html>

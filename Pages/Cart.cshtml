@@ -1,0 +1,48 @@
+@page
+@model CartModel
+@{
+    ViewData["Title"] = "Shopping Cart";
+}
+
+<h2>Your Shopping Cart</h2>
+
+@if (Model.CartItems.Count == 0)
+{
+    <p>Your cart is empty. Please add some services.</p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Service</th>
+                <th>Quantity</th>
+                <th>Price</th>
+                <th>Total</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.CartItems)
+            {
+                <tr>
+                    <td>@item.Service.Name</td>
+                    <td>@item.Quantity</td>
+                    <td>@item.Service.Price.ToString("C")</td>
+                    <td>@(item.Service.Price * item.Quantity).ToString("C")</td>
+                    <td>
+                        <form method="post" asp-page-handler="Remove" asp-route-id="@item.Id">
+                            <button type="submit" class="btn btn-danger">Remove</button>
+                        </form>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <h3>Total: @Model.TotalPrice.ToString("C")</h3>
+
+    <form method="post" asp-page-handler="Checkout">
+        <button type="submit" class="btn btn-success">Proceed to Checkout</button>
+    </form>
+}

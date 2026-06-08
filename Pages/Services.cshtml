@@ -1,0 +1,19 @@
+@page
+@model ServicesModel
+@{
+    ViewData["Title"] = "Our Services";
+}
+
+<h1>Available Salon Services</h1>
+
+<div class="services-list">
+    @foreach (var service in Model.AvailableServices)
+    {
+        <div class="service-item">
+            <h2>@service.Name</h2>
+            <p>@service.Description</p>
+            <p>Price: @service.Price.ToString("C")</p>
+            <a href="/Booking?serviceId=@service.Id" class="btn btn-primary">Book Now</a>
+        </div>
+    }
+</div>
